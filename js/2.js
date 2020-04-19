@@ -15,12 +15,32 @@ pointThree.onclick=function () {
     optionSelect.className= 'optionSelect3';
 };
 
-window.onscroll=function () {
+window.onscroll=function (x) {
     if(window.scrollY>0){
         topNavBar.classList.add('topAnimation');
     }else {
         topNavBar.classList.remove('topAnimation');
     }
+
+    var data=document.querySelectorAll('[data-x]');
+    var min=0;
+    for(var i=1;i<data.length;i++){
+        if(Math.abs(data[i].offsetTop-window.scrollY)<Math.abs(data[min].offsetTop-window.scrollY)){
+            min=i;
+        }
+    }
+    for(var i=0;i<data.length;i++){
+        data[i].classList.remove('active');
+    }
+    data[min].classList.add('active');
+    var id=data[min].getAttribute('id');
+    var a=document.querySelector('a[href="#'+id+'"]');
+    var li=a.parentNode;
+    var brother=li.parentNode.children;
+    for(var i=0;i<brother.length;i++){
+        brother[i].classList.remove('active');
+    }
+    li.classList.add('active');
 };
 
 function animate(time) {
