@@ -22,3 +22,30 @@ window.onscroll=function () {
         topNavBar.classList.remove('topAnimation');
     }
 }
+
+var list=document.getElementById('topList');
+var aLists=list.getElementsByTagName('a');
+for (var i=0;i<aLists.length;i++) {
+    aLists[i].onclick=function (x) {
+        x.preventDefault();
+        function animate(time) {
+            requestAnimationFrame(animate);
+            TWEEN.update(time);
+        }
+        requestAnimationFrame(animate);
+
+        var target=x.currentTarget;
+        var targetHref=target.getAttribute('href');
+        var element=document.querySelector(targetHref);
+        var startTop=window.scrollY;
+        var targetTop=element.offsetTop-70;
+        const coords = { y: startTop };
+        const tween = new TWEEN.Tween(coords)
+            .to({ y: targetTop}, 1000)
+            .easing(TWEEN.Easing.Quadratic.In)
+            .onUpdate(() => {
+                window.scrollTo(0,coords.y)
+            })
+            .start();
+    }
+}
