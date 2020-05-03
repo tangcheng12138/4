@@ -15,10 +15,10 @@ ul ol{
     clear: both;
 }
 
-[data-x].active{
-    border: 3px  #e06567 solid;
+/*[data-x].active{*/
+    /*border: 3px  #e06567 solid;*/
 
-}
+/*}*/
 
 body{
     background-color: #efefef;
@@ -29,7 +29,7 @@ body{
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1;
+    z-index: 100;
     transition: all 1s;
     padding: 20px 0;
 }
@@ -352,4 +352,127 @@ main > .sampleReels .imgs > .img3{
     right: 0;
     bottom: 0;
 }
+.rotation{
+    position: relative;
+    height: 500px;
+    width: 940px;
+    margin-left: auto;
+    margin-right: auto;
 
+}
+
+.rotation ul{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+.rotation ul li{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    list-style: none;
+    font-size: 100px;
+    opacity: 0;
+    color: blueviolet;
+    transition: all 1s;
+}
+
+.rotation > ul li:nth-child(1){
+    background-color: #e06567;
+}
+.rotation > ul li:nth-child(2){
+    background-color: #00FFFF;
+}
+
+.rotation > ul li:nth-child(3){
+    background-color: red;
+}
+.rotation > ul li:nth-child(4){
+    background-color: yellow;
+}
+.rotation > ul li:nth-child(5){
+    background-color: darkorange;
+}
+
+.rotation > .rotationLists .rotationList.active{
+    z-index: 5;
+    opacity: 1;
+}
+.rotation > button{
+    z-index: 10;
+    height: 90px;
+    width: 45px;
+    background-color: rgba(0,0,0,.0);
+    font-size: 60px;
+    font-weight: bold;
+    border: 0;
+    color:  white;
+
+}
+
+.rotation > button:hover{
+    font-size: 80px;
+}
+.rotation > .buttonPre{
+    position: absolute;
+    left: 0;
+    top:250px;
+}
+
+.rotation > .buttonAfter{
+    position: absolute;
+    right: 0;
+    top:250px;
+}
+.rotation > .pointLists{
+    position: absolute;
+    bottom: 15px;
+    left: 420px;
+    z-index: 10;
+
+}
+.rotation > .pointLists li{
+    height: 10px;
+    width: 10px;
+    border-radius: 100%;
+    background-color: rgba(0,0,0,.2);
+    list-style: none;
+    float: left;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.rotation > .pointLists > .point.active{
+    background-color: rgba(0,0,0,.6);
+}
+
+.message{
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    margin-top: 20px;
+
+}
+.message h2{
+    text-align: center;
+}
+
+.message ul{
+    list-style: none;
+    border-top: 1px #dedede solid;
+}
+
+.message ul li{
+    border-bottom: 1px #dedede solid;
+    height: 50px;
+    line-height: 50px;
+}
+.message #postMessage{
+    margin-top: 50px;
+}
+.message #postMessage input{
+    margin-right: 50px;
+
+}

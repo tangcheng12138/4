@@ -142,10 +142,42 @@
                 <img src="img/3.jpg">
             </div>
         </div>
+
     </div>
 </main>
-<script type="text/javascript" src="js/tween.min.js"></script>
+<div class="rotation">
+    <ul class="rotationLists">
+        <li class="rotationList active"><img src="img/8.jpg" height=500px width="940px"></li>
+        <li class="rotationList"><img src="img/4.jpg" height=500px width="940px"></li>
+        <li class="rotationList"><img src="img/5.jpg" height=500px width="940px"></li>
+        <li class="rotationList"><img src="img/7.jpg" height=500px width="940px"></li>
+        <li class="rotationList"><img src="img/9.jpg" height=500px width="940px"></li>
+    </ul>
+    <ol class="pointLists">
+        <li class="point active"></li>
+        <li class="point"></li>
+        <li class="point"></li>
+        <li class="point"></li>
+        <li class="point"></li>
+    </ol>
+    <button id="buttonPre" class="buttonPre"><</button>
+    <button id="buttonAfter" class="buttonAfter">></button>
+</div>
+<div class="message">
+    <h2>留言</h2>
+    <ul id="messageLists" class="messageLists">
+
+    </ul>
+    <form id="postMessage">
+        姓名： <input type="text" name="name">
+        内容： <input type="text" name="content">
+        <input type="submit" value="提交">
+    </form>
+</div>
+<script type="text/javascript" src="leancloud/node_modules/leancloud-storage/dist/av-min.js"></script>
 <script type="text/javascript" src="js/2.js"></script>
+<script type="text/javascript" src="js/tween.min.js"></script>
+
 </body>
 </html>
 

@@ -69,3 +69,94 @@ for (var i=0;i<aLists.length;i++) {
             .start();
     }
 }
+
+var buttonPre=document.getElementById('buttonPre');
+var buttonAfter=document.getElementById('buttonAfter');
+var rotationList=document.getElementsByClassName('rotationList');
+var points=document.getElementsByClassName('point')
+var index=0;
+var time=0;
+
+buttonAfter.addEventListener('click',function () {
+    time=0;
+    index++;
+    if(index>4){
+        index=0
+    }
+    showIndex();
+});
+
+buttonPre.addEventListener('click',function () {
+    time=0;
+    index--;
+    if(index<0){
+        index=4
+    }
+    showIndex();
+})
+
+function showIndex() {
+    clearIndex();
+    rotationList[index].classList.add('active');
+    points[index].classList.add('active');
+}
+
+function clearIndex() {
+    for(var i=0;i<rotationList.length;i++){
+        rotationList[i].classList.remove('active');
+        points[i].classList.remove('active');
+    }
+}
+
+setInterval(function () {
+    time++;
+    if(time===20){
+        time=0
+        index++;
+    if(index>4){
+        index=0
+    }
+    showIndex();
+    }
+},100);
+
+AV.init({
+    appId: "hXU73OkCf9YVnAlOmBKQNNdC-gzGzoHsz",
+    appKey: "2xgDUWpisc0b5V7TjUeSkwHL",
+    serverURL: "https://hxu73okc.lc-cn-n1-shared.com"
+});
+
+
+const query = new AV.Query('message');
+var messageList=document.getElementById('messageLists');
+query.find().then(function (messages) {
+    for(var i=0;i<messages.length;i++){
+        var words=messages[i].attributes.words;
+        var names=messages[i].attributes.name;
+        var li=document.createElement('li');
+        li.innerHTML=names+':'+words;
+        messageList.appendChild(li);
+    }
+},function (error) {
+
+});
+
+var postMessage=document.getElementById('postMessage');
+postMessage.addEventListener('submit',function (e) {
+    e.preventDefault();
+    var content=postMessage.querySelector('input[name=content]').value;
+    var name=postMessage.querySelector('input[name=name]').value;
+    const TestObject = AV.Object.extend('message');
+    const testObject = new TestObject();
+    testObject.set('words',content);
+    testObject.set('name',name);
+    testObject.save().then((testObject) => {
+        var li=document.createElement('li');
+        li.innerHTML=name+': '+content;
+        messageList.appendChild(li);
+        postMessage.querySelector('input[name=content]').value='';
+        postMessage.querySelector('input[name=name]').value='';
+    })
+
+});
+
